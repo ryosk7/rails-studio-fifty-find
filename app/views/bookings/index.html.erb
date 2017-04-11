@@ -1,0 +1,8 @@
+<h3>Your bookings :</h3>
+
+<ul class="list-unstyled">
+<% @bookings.each do |booking| %>
+<li><%= booking.date %> at <%= booking.studio.name %></li>
+<% end %>
+</ul>
+
