@@ -12,6 +12,7 @@ gem 'devise'
 
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
+gem 'rails-assets-bootstrap-datepicker'
 
 
 gem 'sass-rails'
