@@ -8,9 +8,6 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    if @user.nil?
-      redirect_to new_user_session_path
-    end
   end
 
   def create
@@ -33,7 +30,11 @@ class BookingsController < ApplicationController
   private
 
   def set_user
-    @user = User.find(current_user.id)
+    if current_user.nil?
+      redirect_to new_user_session_path
+    else
+      @user = User.find(current_user.id)
+    end
   end
 
   def set_studio
