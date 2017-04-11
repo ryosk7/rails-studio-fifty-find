@@ -1,18 +1,19 @@
 <div class="container">
   <div class="row">
 
-    <h1>Studios</h1>
-    <h4>Is this what you were looking for?</h4>
+    <h1 class="main-title">Studio Results</h1>
 
     <% @studios.each do |studio| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="card-studios"  style="background-image: url( '<%= studio.photo %>' )">
+      <%= link_to studio do %>
+        <div class="card-studios" style="background-image: url( '<%= studio.photo %>' )">
           <div class="card-description">
             <h2><%= link_to studio.name, studio_path(studio) %></h2>
                 <p><%= studio.location %></p>
                 <p><%= studio.price %> yen / day</p>
           </div>
         </div>
+      <% end %>
       </div>
     <% end %>
   </div>
