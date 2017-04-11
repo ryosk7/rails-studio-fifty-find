@@ -1,5 +1,16 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 0%, rgba(0,36,61,0.3) 50%), url('<%= image_path 'studiobackground.jpg' %>');">
   <div class="banner-content">
-    <%= link_to "Search", studios_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <%= form_tag studios_path, method: :get do %>
+      <input type="text" name="date" class="form-control datepicker">
+      <%= submit_tag "Search", class: "search-wagon-button btn" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="main-title">
+      <h1>Find a Studio Near You</h1>
+    </div>
   </div>
 </div>
