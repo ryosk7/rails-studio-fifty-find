@@ -1,8 +1,33 @@
-<div class="studio">
-   <%= cl_image_tag @studio.photo %>
-   <h1><%= @studio.name %></h1>
-   <p><%= @studio.location %></p>
-   <p><%= @studio.price %></p>
-   <p><%= @studio.capacity%></p>
-   <p><%= @studio.description %></p>
+<div class="studio-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path @studio.photo %>')">
+  <div class="container">
+    <div class="row">
+      <div class="wrapper-black">
+        <h1><%= @studio.name %></h1>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-md-6">
+              <div class="studio-card">
+              <p><%= @studio.location %></p>
+              <p><%= @studio.price %></p>
+              <p><%= @studio.capacity%></p>
+              <p><%= @studio.description %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="wrapper-black">
+        <h3><%= link_to "Book", new_studio_booking_path(@studio) %></h3>
+
+      </div>
+    </div>
+  </div>
 </div>
+
+
+
+
