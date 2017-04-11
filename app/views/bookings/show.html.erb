@@ -1,5 +1,21 @@
 
 <h2>Thank you , <%= @booking.user.first_name %>!</h2>
-<h3>Your booking on <%= @booking.date %> is being processed!</h3>
+<h3>Your booking request for <%= @booking.studio.name %> on
+<%= @booking.date %> has been sent to <%= @booking.studio.user.first_name %>!</h3>
 
-<p><%= @booking.status %></p>
+    <%= form_tag studio_path(@booking.studio), method: :get do %>
+      <%= submit_tag "Back to studio", class: "search-wagon-button btn" %>
+    <% end %>
+
+    <%= form_tag root_path, method: :get do %>
+      <%= submit_tag "Go to home page", class: "search-wagon-button btn" %>
+    <% end %>
+
+
+<h3>Your recent bookings</h3>
+
+<ul class="list-unstyled">
+<% @bookings.each do |booking| %>
+<li><%= booking.date %> at <%= booking.studio.name %></li>
+<% end %>
+</ul>
