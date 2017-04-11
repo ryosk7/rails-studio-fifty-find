@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'studios/index'
-
-  get 'studios/show'
-
   devise_for :users
   root to: 'pages#home'
 

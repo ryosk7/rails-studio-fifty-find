@@ -2,20 +2,18 @@
   <div class="row">
 
     <h1>Studios</h1>
-      <p>Is this what you were looking for?</p>
+    <p>Is this what you were looking for?</p>
 
     <ul class="list-unstyled">
     <% @studios.each do |studio| %>
       <div class="col-xs-12 col-sm-4">
-        <div class="card-studios">
-          <li>
-          Name: <%= link_to studio.name, studio_path(studio) %>
-          <ul>
-            <li>Location: <%= studio.location %></li>
-            <li> Price: <%= studio.price %> yen per day</li>
-            <li>Owned by: <%= studio.user.first_name %></li>
-          </ul>
-          </li>
+        <div class="card-studios"  style="background-image: url( '<%= studio.photo %>' )">
+          <div class="card-description">
+            <li><h2><%= link_to studio.name, studio_path(studio) %></h2>
+                <p><%= studio.location %></p>
+                <p><%= studio.price %> yen / day</p>
+            </li>
+          </div>
         </div>
       </div>
     <% end %>
