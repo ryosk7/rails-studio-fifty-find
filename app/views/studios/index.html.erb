@@ -1,6 +1,25 @@
-<h1>Studios#index</h1>
-<p>Find me in app/views/studios/index.html.erb</p>
+<div class="container">
+  <div class="row">
 
-<% @studios.each do |studio| %>
- <%= studio.photo  %>
-<% end %>
+    <h1>Studios</h1>
+      <p>Is this what you were looking for?</p>
+
+    <ul class="list-unstyled">
+    <% @studios.each do |studio| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card-studios">
+          <li>
+          Name: <%= link_to studio.name, studio_path(studio) %>
+          <ul>
+            <li>Location: <%= studio.location %></li>
+            <li> Price: <%= studio.price %> yen per day</li>
+            <li>Owned by: <%= studio.user.first_name %></li>
+          </ul>
+          </li>
+        </div>
+      </div>
+    <% end %>
+    </ul>
+
+  </div>
+</div>
