@@ -1,0 +1,16 @@
+@import "show";
+
+h2>a {
+  color: white;
+}
+h2>a:hover {
+  color: $red;
+}
+
+h3>a {
+  color: $yellow;
+}
+
+h3>a:hover {
+  color: white;
+}
