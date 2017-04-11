@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  # post 'studios', to: 'studios/create'
-  # get 'users', to: 'users/:id'
-  # post 'bookings', to: 'bookings/show'
-  # get 'studios', to: 'studios/new'
-  # get 'studios', to: 'studios/?'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :studios, only:[:index, :show, :new, :create] do
+    resources :bookings, only:[:new, :create]
+  end
+
+  resources :bookings, only:[:index, :show, :destroy]
+  resources :offers, only:[:index] do
+    member do
+      patch :accept
+      patch :reject
+    end
+  end
 end
