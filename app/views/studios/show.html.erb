@@ -1,2 +1,8 @@
-<h1>Studios#show</h1>
-<p>Find me in app/views/studios/show.html.erb</p>
+<div class="studio">
+   <%= cl_image_tag @studio.photo %>
+   <h1><%= @studio.name %></h1>
+   <p><%= @studio.location %></p>
+   <p><%= @studio.price %></p>
+   <p><%= @studio.capacity%></p>
+   <p><%= @studio.description %></p>
+</div>
