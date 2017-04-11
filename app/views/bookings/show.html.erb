@@ -1,21 +1,33 @@
+<div class="container">
+  <div class="row">
 
 <h2>Thank you , <%= @booking.user.first_name %>!</h2>
 <h3>Your booking request for <%= @booking.studio.name %> on
 <%= @booking.date %> has been sent to <%= @booking.studio.user.first_name %>!</h3>
 
-    <%= form_tag studio_path(@booking.studio), method: :get do %>
-      <%= submit_tag "Back to studio", class: "search-wagon-button btn" %>
-    <% end %>
+    <%= link_to "Back to studio", studio_path(@booking.studio), class: "search-wagon-button btn" %>
 
-    <%= form_tag root_path, method: :get do %>
-      <%= submit_tag "Go to home page", class: "search-wagon-button btn" %>
-    <% end %>
+    <%= link_to "Go to home page", root_path, class: "search-wagon-button btn" %>
+
 
 
 <h3>Your recent bookings</h3>
 
-<ul class="list-unstyled">
-<% @bookings.each do |booking| %>
-<li><%= booking.date %> at <%= booking.studio.name %></li>
-<% end %>
-</ul>
+
+
+    <ul class="list-unstyled">
+    <% @bookings.each do |booking| %>
+    <div class="col-xs-12 col-sm-12">
+      <div class="card-studios"  style="background-image: url( '<%= booking.studio.photo %>' )">
+        <div class="card-description">
+          <li> <h2><%= booking.studio.name %></h2>
+          <p><%= booking.date %></p>
+          <h2><%= booking.status %></h2>
+          </li>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    </ul>
+  </div>
+</div>
