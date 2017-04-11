@@ -21,13 +21,14 @@
 
     <div class="row">
       <div class="wrapper-black">
-        <h3><%= link_to "Book", new_studio_booking_path(@studio) %></h3>
-        <%= simple_form_for [@studio, @booking] do |f| %>
-          <%= f.input :member %>
-          <%= f.input :date %>
-        <%= f.submit "Book Studio", class: "btn btn-primary" %>
-        <% end %>
-
+        <div class="skinny">
+          <h3>Book Now</h3>
+          <%= simple_form_for [@studio, @booking] do |f| %>
+            <%= f.input :member, label: '# of members', collection: (1..@studio.capacity) %>
+            <%= f.input :date %>
+          <%= f.submit "Book Studio", class: "search-wagon-button btn" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
