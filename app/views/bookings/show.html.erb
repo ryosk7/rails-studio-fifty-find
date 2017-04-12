@@ -1,32 +1,25 @@
 <div class="container">
   <div class="row">
-
-<h2>Thank you , <%= @booking.user.first_name %>!</h2>
-<h3>Your booking request for <%= @booking.studio.name %> on
-<%= @booking.date %> has been sent to <%= @booking.studio.user.first_name %>!</h3>
-
-    <%= link_to "Back to studio", studio_path(@booking.studio), class: "search-wagon-button btn" %>
-
-    <%= link_to "Go to home page", root_path, class: "search-wagon-button btn" %>
-
-
-<h3>Your recent bookings</h3>
-
-
-
-    <ul class="list-unstyled">
-    <% @bookings.each do |booking| %>
     <div class="col-xs-12 col-sm-12">
-      <div class="card-studios"  style="background-image: url( '<%= booking.studio.photo %>' )">
-        <div class="card-description">
-          <li> <h2><%= booking.studio.name %></h2>
-          <p><%= booking.date %></p>
-          <h2><%= booking.status %></h2>
-          </li>
-        </div>
+      <div class="wrapper-booking">
+        <h2>Thank you , <%= @booking.user.first_name %>!</h2>
+        <p>Your booking request for <%= @booking.studio.name %> on
+        <%= @booking.date %> has been sent to <%= @booking.studio.user.first_name %>!</p>
+        <%= link_to "Back to studio", studio_path(@booking.studio), class: "search-wagon-button btn text-center" %>
+        <%= link_to "Go to home page", root_path, class: "search-wagon-button btn text-center" %>
+        <h3>Your recent bookings:</h3>
+        <% @bookings.each do |booking| %>
+
+          <div class="card-studios"  style="background-image: url( '<%= booking.studio.photo %>' )">
+            <div class="card-description">
+              <h2><%= booking.studio.name %></h2>
+              <p><%= booking.date %></p>
+              <h2><%= booking.status %></h2>
+            </div>
+          </div>
+        <% end %>
+
       </div>
     </div>
-    <% end %>
-    </ul>
   </div>
 </div>

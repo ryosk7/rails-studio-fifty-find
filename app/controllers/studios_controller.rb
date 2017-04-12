@@ -12,7 +12,6 @@ class StudiosController < ApplicationController
       date = date.split("/")
       formatted_date = "#{date[2]}-#{date[0]}-#{date[1]}"
       parsed_date = Date.parse(formatted_date)
-
       @studios = Studio.available_for(parsed_date).where.not(latitude: nil, longitude: nil)
     end
     @hash = Gmaps4rails.build_markers(@studios) do |studio, marker|
