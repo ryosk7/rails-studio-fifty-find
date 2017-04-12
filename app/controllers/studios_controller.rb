@@ -7,6 +7,7 @@ class StudiosController < ApplicationController
     # date = params[:date]
     # if date == ""
       @studios = Studio.where.not(latitude: nil, longitude: nil)
+
     # else
     #   if Booking.all == []
     #     @studios = Studio.where.not(latitude: nil, longitude: nil)
@@ -28,6 +29,7 @@ class StudiosController < ApplicationController
       # end
     # end
     # binding.pry
+    
     @hash = Gmaps4rails.build_markers(@studios) do |studio, marker|
       marker.lat studio.latitude
       marker.lng studio.longitude
