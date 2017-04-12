@@ -1,4 +1,25 @@
-/* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
- * ------------------------------------- */
+.wrapper-carousel {
+  display: flex;
+  justify-content: space-between;
+  background-color: #E5E5E5;
+  color: $blue;
+  padding: 20px;
+}
+
+.first-box {
+
+  text-align: center;
+  border-radius: 5px;
+  margin: 10px;
+  width: 400px;
+  height: 300px;
+  flex: 1 1 50%;
+}
+
+.second-box {
+  text-align: center;
+  margin: 10px;
+  width: 400px;
+  height: 300px;
+  flex: 1 1 50%;
+}

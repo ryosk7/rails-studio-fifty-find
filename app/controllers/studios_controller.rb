@@ -9,9 +9,9 @@ class StudiosController < ApplicationController
     else
       date = date.split("/")
       formatted_date = "#{date[2]}-#{date[0]}-#{date[1]}"
-      @studios = Booking.where.not(date: formatted_date).includes(:studio).map { |booking| booking.studio }.uniq.reject { |studio| studio.latitude.nil? || studio.longitude.nil? }
+      @studios = Booking.where.not(date: formatted_date).includes(:studio).map { |booking| booking.studio }.reject { |studio| studio.latitude.nil? || studio.longitude.nil? }
     end
-    
+
     @hash = Gmaps4rails.build_markers(@studios) do |studio, marker|
       marker.lat studio.latitude
       marker.lng studio.longitude
