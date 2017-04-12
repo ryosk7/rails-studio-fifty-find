@@ -2,12 +2,19 @@ class StudiosController < ApplicationController
   before_action :set_user, only: [:new, :create]
 
   def index
-    # @studios = Studio.all
-    @studios = Studio.where.not(latitude: nil, longitude: nil)
-
+    # Studio.joins(:bookings).where.not(bookings: { date: date})
+    date = params[:date]
+    if date == ""
+      @studios = Studio.where.not(latitude: nil, longitude: nil)
+    else
+      date = date.split("/")
+      formatted_date = "#{date[2]}-#{date[0]}-#{date[1]}"
+      @studios = Booking.where.not(date: formatted_date).includes(:studio).map { |booking| booking.studio }.uniq.reject { |studio| studio.latitude.nil? || studio.longitude.nil? }
+    end
+    
     @hash = Gmaps4rails.build_markers(@studios) do |studio, marker|
-    marker.lat studio.latitude
-    marker.lng studio.longitude
+      marker.lat studio.latitude
+      marker.lng studio.longitude
     end
   end
 
