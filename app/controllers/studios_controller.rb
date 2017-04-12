@@ -2,7 +2,15 @@ class StudiosController < ApplicationController
   before_action :set_user, only: [:new, :create]
 
   def index
-    @studios = Studio.all
+    # Studio.joins(:bookings).where.not(bookings: { date: date})
+    date = params[:date]
+    if date == ""
+      @studios = Studio.all
+    else
+      date = date.split("/")
+      formatted_date = "#{date[2]}-#{date[0]}-#{date[1]}"
+      @studios = Booking.where.not(date: formatted_date).includes(:studio).map { |booking| booking.studio }.uniq
+    end
   end
 
   def show
