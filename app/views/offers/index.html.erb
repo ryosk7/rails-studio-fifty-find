@@ -1,27 +1,27 @@
-<h3>Your offers:</h3>
-  <div class="container">
-    <% @offers.each do |offer| %>
-    <div class="row wrapper-offer">
-      <div class="col-xs-12 col-sm-4">
-        <div class="offer-card">
-          <%= link_to "Accept", accept_offer_path(offer), method: :patch, class: "btn btn-info" %>
-          <%= link_to "Reject", reject_offer_path(offer), method: :patch, class: "btn btn-danger" %>
-        </div>
+<h3 class="main-title">Your offers:</h3>
+<div class="container">
+  <% @offers.each do |offer| %>
+  <div class="row wrapper-offer">
+    <div class="col-xs-12 col-sm-4">
+      <div class="offer-card">
+        <%= link_to "Accept", accept_offer_path(offer), method: :patch, class: "btn btn-success offer-button" %>
+        <%= link_to "Reject", reject_offer_path(offer), method: :patch, class: "btn btn-danger offer-button" %>
       </div>
-      <div class="col-xs-12 col-sm-4">
-        <div class="offer-card">
-          <h2><%= offer.studio.name %></h2>
-          <p><%= offer.date %></p>
-          <p><strong><%= offer.status %></strong></p>
-        </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="offer-card">
+        <h2><%= offer.studio.name %></h2>
+        <p><%= offer.date %></p>
+        <p><strong><%= offer.status %></strong></p>
       </div>
-      <div class="col-xs-12 col-sm-4">
-        <div class="offer-card">
-          <div class="card-studios"  style="background-image: url( '<%= offer.studio.photo %>' )">
-          </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="offer-card">
+        <div class="card-studios"  style="background-image: url( '<%= offer.studio.photo %>' )">
         </div>
       </div>
     </div>
-    <% end %>
   </div>
+  <% end %>
+</div>
 
