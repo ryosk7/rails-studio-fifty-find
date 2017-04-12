@@ -12,6 +12,9 @@ gem 'devise'
 
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
+gem "geocoder"
+gem "coffee-rails"
+gem "gmaps4rails"
 
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -34,4 +37,5 @@ end
 
 source "https://rails-assets.org" do
   gem 'rails-assets-bootstrap-datepicker'
+  gem "rails-assets-underscore"
 end
