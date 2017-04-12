@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only:[:index, :show, :destroy]
-  resources :offers, only:[:index] do
+  resources :offers, only:[:index, :show] do
     member do
       patch :accept
       patch :reject

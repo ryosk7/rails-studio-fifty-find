@@ -29,7 +29,7 @@ class StudiosController < ApplicationController
       # end
     # end
     # binding.pry
-    
+
     @hash = Gmaps4rails.build_markers(@studios) do |studio, marker|
       marker.lat studio.latitude
       marker.lng studio.longitude
