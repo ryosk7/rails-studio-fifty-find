@@ -1,6 +1,6 @@
 puts "Deleting users and studios...."
-User.destroy_all
 Studio.destroy_all
+User.destroy_all
 puts "looking for users studios..."
 
 doug = User.create!(
