@@ -3,10 +3,14 @@ class Studio < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   belongs_to :user
+
   validates :location, presence: true
   validates :price, presence: true
   validates :description, presence:true
   validates :user, presence:true
   validates :capacity, presence:true
   validates :photo, presence:true
+
+  geocoded_by :location
+  after_validation :geocode, if: :location_changed?
 end

@@ -2,7 +2,13 @@ class StudiosController < ApplicationController
   before_action :set_user, only: [:new, :create]
 
   def index
-    @studios = Studio.all
+    # @studios = Studio.all
+    @studios = Studio.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@studios) do |studio, marker|
+    marker.lat studio.latitude
+    marker.lng studio.longitude
+    end
   end
 
   def show
