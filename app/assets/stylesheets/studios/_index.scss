@@ -16,3 +16,17 @@ h3>a:hover {
   color: white;
   text-decoration: none;
 }
+
+.wrapper-map {
+  display: flex;
+  justify-content: space-between;
+}
+
+.results-box {
+  flex: 1 1 60%;
+}
+
+.map-box {
+  margin-top: 15px;
+  flex: 1 0 40%;
+}

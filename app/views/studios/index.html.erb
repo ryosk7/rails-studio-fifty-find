@@ -1,40 +1,42 @@
-<div class="container">
-  <div class="row">
-
-    <h1 class="main-title">Studio Results</h1>
-
-    <% @studios.each do |studio| %>
-      <%= link_to studio_path(studio) do %>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="card-studios" style="background-image: url( '<%= studio.photo %>' )">
-          <div class="card-description">
-            <h2><%= link_to studio.name, studio_path(studio) %></h2>
+<h1 class="main-title">Studio Results</h1>
+<div class="wrapper-map">
+  <div class="container">
+    <div class="row">
+      <div class="results-box">
+        <% @studios.each do |studio| %>
+          <div class="col-xs-12 col-sm-6 col-lg-4">
+            <div class="card-studios" style="background-image: url( '<%= studio.photo %>' )">
+              <div class="card-description">
+                <h2><%= link_to studio.name, studio_path(studio) %></h2>
                 <p><%= studio.location %></p>
                 <p><%= studio.price %> yen / day</p>
+              </div>
+              <%= link_to nil, studio_path(studio), class: "card-link" %>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
+    </div>
+  </div>
+  <div class="map-box">
+    <div id="map" style="width: 100%; height: 100%;">
+      <% content_for(:after_js) do %>
+        <script>
+          $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(2);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(14);
+              }
+            });
+          });
+        </script>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
-
-<div id="map" style="width: 100%; height: 600px;"></div>
-
-<% content_for(:after_js) do %>
-  <script>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
-  </script>
-<% end %>
