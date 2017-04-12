@@ -13,4 +13,7 @@ class Studio < ApplicationRecord
 
   geocoded_by :location
   after_validation :geocode, if: :location_changed?
+
+  # Find all available studios through their bookings
+  # scope :available_for, ->(date) { joins(:bookings).group("studios.id, bookings.date") }
 end

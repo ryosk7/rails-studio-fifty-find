@@ -1,1 +1,22 @@
-// Your footer style
+#footer {
+  // margin-top: 10px;
+  background-color: $blue;
+  padding: 10px;
+  color: #CCCCCC;
+  align-items: center;
+}
+#footer p {
+  margin-top: 10px;
+}
+// #footer ul {
+//   margin-top: 10px;
+// }
+#footer a {
+  color: #CCCCCC;
+  font-size: 25px;
+  letter-spacing: 20px;
+  transition: color 0.5s ease;
+}
+#footer a:hover{
+  color: $yellow;
+}
