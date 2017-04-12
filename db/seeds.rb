@@ -7,19 +7,23 @@ doug = User.create!(
   password: "123456",
   email: "douglas@lewagon.com",
   first_name: "Douglas",
-  last_name: "Berkley" )
+  last_name: "Berkley",
+  photo: File.new(Rails.root.join("db/fixtures/douglas.jpeg")))
+
 
 ainaa = User.create!(
   password: "123456",
   email: "ainaa@lewagon.com",
   first_name: "Ainaa",
-  last_name: "Sakinah" )
+  last_name: "Sakinah",
+  photo: File.new(Rails.root.join("db/fixtures/ainaa.jpeg")))
 
 ryo = User.create!(
   password: "123456",
   email: "ryosuke@lewagon.com",
   first_name: "Ryosuke",
-  last_name: "Uchida" )
+  last_name: "Uchida",
+  photo: File.new(Rails.root.join("db/fixtures/ryo.jpeg")))
 
 Studio.create!(
   name: "Abbey Road Studios",
