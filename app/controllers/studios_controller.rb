@@ -1,35 +1,20 @@
 class StudiosController < ApplicationController
-  before_action :set_user, only: [:new, :create]
+  before_action :set_user, only: [:new, :create, :edit, :update, :owner_list]
+  before_action :set_studio, only: [:show, :edit, :update, :destroy]
 
   def index
     # Studio.joins(:bookings).where.not(bookings: { date: date})
 
-    # date = params[:date]
-    # if date == ""
+    date = params[:date]
+    if date == ""
       @studios = Studio.where.not(latitude: nil, longitude: nil)
 
-    # else
-    #   if Booking.all == []
-    #     @studios = Studio.where.not(latitude: nil, longitude: nil)
-    #   else
-    #     date = date.split("/")
-    #     formatted_date = "#{date[2]}-#{date[0]}-#{date[1]}"
-
-
-    #     @studios = Booking.where.not(date: formatted_date).includes(:studio).
-    #       map { |booking| booking.studio }.
-    #       uniq.
-    #       reject { |studio| studio.latitude.nil? || studio.longitude.nil? }
-
-        # no_booking = Studio.all.map.select { |studio| studio.bookings == [] }
-        # @studios << no_booking
-
-        # @studios = Studio.all.map do |studio| Booking.where.not(date: formatted_date).includes(:studio).map { |booking| booking.studio }.uniq.reject { |studio| studio.latitude.nil? || studio.longitude.nil? }
-        # end
-      # end
-    # end
-    # binding.pry
-    
+    else
+      date = date.split("/")
+      formatted_date = "#{date[2]}-#{date[0]}-#{date[1]}"
+      parsed_date = Date.parse(formatted_date)
+      @studios = Studio.available_for(parsed_date).where.not(latitude: nil, longitude: nil)
+    end
     @hash = Gmaps4rails.build_markers(@studios) do |studio, marker|
       marker.lat studio.latitude
       marker.lng studio.longitude
@@ -37,8 +22,12 @@ class StudiosController < ApplicationController
 
   end
 
+  def owner_list
+    @studios = Studio.where(user_id: @user)
+  end
+
   def show
-    @studio = Studio.find(params[:id])
+    session[:return_to] = request.url
     @booking = Booking.new
   end
 
@@ -56,14 +45,27 @@ class StudiosController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @studio.update(studio_param)
+    redirect_to studios_owner_list_path
+  end
+
+  def destroy
+    @studio.destroy
+    redirect_to studios_owner_list_path
+  end
+
   private
 
   def set_user
-    if current_user.nil?
-      redirect_to new_user_session_path
-    else
-      @user = User.find(current_user.id)
-    end
+    @user = User.find(current_user.id)
+  end
+
+  def set_studio
+    @studio = Studio.find(params[:id])
   end
 
   def studio_param

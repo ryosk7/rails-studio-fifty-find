@@ -1,24 +1,25 @@
+<h3 class="main-title">Your bookings:</h3>
 <div class="container">
-  <div class="row">
-
-
-    <h3>Your bookings :</h3>
-
-    <ul class="list-unstyled">
-    <% @bookings.each do |booking| %>
-    <div class="col-xs-12 col-sm-12">
-      <div class="card-studios"  style="background-image: url( '<%= booking.studio.photo %>' )">
-        <div class="card-description">
-          <li> <h2><%= booking.studio.name %></h2>
-          <p><%= booking.date %></p>
-          <h2><%= booking.status %></h2>
-          </li>
+  <% @bookings.each do |booking| %>
+  <div class="row wrapper-offer">
+    <div class="col-xs-12 col-sm-4">
+      <div class="offer-card">
+        <h2><%= booking.studio.name %></h2>
+        <p>Booking for : <%= booking.date %></p>
+        <h3><strong><%= booking.status %></strong></h3>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="offer-card">
+        <div class="card-studios"  style="background-image: url( '<%= booking.studio.photo %>' )">
         </div>
       </div>
     </div>
-    <% end %>
-    </ul>
+    <div class="col-xs-12 col-sm-4">
+      <div class="offer-card">
+      <%= link_to 'Cancel', booking_path(booking), method: :delete, data: { confirm: 'Confirm cancellation...' }, class: "btn btn-danger offer-button" %>
+      </div>
+    </div>
   </div>
+  <% end %>
 </div>
-
-
