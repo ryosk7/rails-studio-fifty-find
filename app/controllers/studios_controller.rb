@@ -27,7 +27,7 @@ class StudiosController < ApplicationController
   end
 
   def show
-    # session[:return_to] = request.url
+    session[:return_to] = request.url
     @booking = Booking.new
   end
 
