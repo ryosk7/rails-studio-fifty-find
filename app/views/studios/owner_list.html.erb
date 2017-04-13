@@ -9,8 +9,8 @@
       </div>
 
       <div class="offer-card">
-      <%= link_to "Edit", root_path, method: :patch, class: "btn btn-info offer-button" %>
-      <%= link_to 'Remove', root_path, method: :delete, data: { confirm: 'Confirm remove...' }, class: "btn btn-danger offer-button" %>
+      <%= link_to "Edit", edit_studio_path(studio), class: "btn btn-info offer-button" %>
+      <%= link_to 'Remove', studio_path(studio), method: :delete, data: { confirm: 'Confirm remove...' }, class: "btn btn-danger offer-button" %>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6">
