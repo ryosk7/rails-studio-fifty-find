@@ -12,6 +12,7 @@
           <%= link_to 'Cancel', booking_path(booking), method: :delete, data: { confirm: 'Confirm cancellation...' }, class: "btn btn-danger offer-button" %>
         </div>
       </div>
+          <%= cl_image_tag booking.studio.user.photo, id: "navbar-wagon-menu", class: "avatar card-user" %>
     </div>
   </div>
   <% end %>
