@@ -1,0 +1,33 @@
+.wrapper-offer {
+  background-color: $blue;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  color: $blue;
+  border-radius: 5px;
+}
+
+.offer-card {
+  background-color: white;
+  padding: 10px;
+
+  margin: 5% auto;
+  box-shadow: 1px 1px 2px #e7e7e7;
+  border-radius: 4px;
+  text-align: center;
+  // margin-right: 50px;
+}
+
+.wrapper-booking {
+
+  background-color: #E5E5E5;
+  color: $blue;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.offer-button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
