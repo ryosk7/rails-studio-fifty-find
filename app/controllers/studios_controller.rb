@@ -43,11 +43,7 @@ class StudiosController < ApplicationController
   private
 
   def set_user
-    if current_user.nil?
-      redirect_to new_user_session_path
-    else
-      @user = User.find(current_user.id)
-    end
+    @user = User.find(current_user.id)
   end
 
   def studio_param

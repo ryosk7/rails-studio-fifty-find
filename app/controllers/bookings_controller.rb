@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_studio, only: [:new, :create]
-  before_action :set_user, only: [:index, :create, :show, :new]
+  before_action :authenticate_user!, only: [:new, :create]
+  before_action :set_user, only: [:create, :show, :index]
 
   def index
     @bookings = Booking.where(user: @user)
@@ -39,11 +40,7 @@ class BookingsController < ApplicationController
   private
 
   def set_user
-    if current_user.nil?
-      redirect_to new_user_session_path
-    else
-      @user = User.find(current_user.id)
-    end
+    @user = User.find(current_user.id)
   end
 
   def set_studio
