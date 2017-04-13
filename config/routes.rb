@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+  get "studios/owner_list", to: "studios#owner_list"
+
   resources :studios, only:[:index, :show, :new, :create] do
     resources :bookings, only:[:new, :create]
   end

@@ -1,5 +1,5 @@
 class StudiosController < ApplicationController
-  before_action :set_user, only: [:new, :create]
+  before_action :set_user, only: [:new, :create, :owner_list]
 
   def index
     # Studio.joins(:bookings).where.not(bookings: { date: date})
@@ -19,6 +19,10 @@ class StudiosController < ApplicationController
       marker.lng studio.longitude
     end
 
+  end
+
+  def owner_list
+    @studios = Studio.where(user_id: @user)
   end
 
   def show
