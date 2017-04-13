@@ -9,20 +9,20 @@ class OffersController < ApplicationController
   end
 
   def accept
-    @offer.status = "Approved"
+    @offer.status = "Accepted"
     @offer.save
     redirect_to :back
   end
 
   def reject
     @offer.status = "Rejected"
-    @over.save
+    @offer.save
     redirect_to :back
   end
 
   private
   def set_offer
-    @offer = Booking.find(param[:id])
+    @offer = Booking.find(params[:id])
   end
 
 end
