@@ -27,6 +27,15 @@ class BookingsController < ApplicationController
     @bookings = Booking.where(user: @user)
   end
 
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    respond_to do |format|
+      format.html { redirect_to bookings_path, notice: 'Booking was successfully cancelled.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
 
   def set_user
