@@ -11,8 +11,9 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+<!--     <p class="notice"><#%= notice %></p>
+    <p class="alert"><#%= alert %></p> -->
+    <%= render 'layouts/messages' %>
     <%= yield %>
     <%= render 'shared/footer' %>
     <%= javascript_include_tag "https://maps.google.com/maps/api/js?key=#{ENV['GOOGLE_MAPS_API']}" %>
