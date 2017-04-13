@@ -7,19 +7,34 @@
         <%= @booking.date %> has been sent to <%= @booking.studio.user.first_name %>!</p>
         <%= link_to "Back to studio", studio_path(@booking.studio), class: "search-wagon-button btn text-center" %>
         <%= link_to "Go to home page", root_path, class: "search-wagon-button btn text-center" %>
-        <h3>Your recent bookings:</h3>
-        <% @bookings.each do |booking| %>
-
-          <div class="card-studios"  style="background-image: url( '<%= booking.studio.photo %>' )">
-            <div class="card-description">
-              <h2><%= booking.studio.name %></h2>
-              <p><%= booking.date %></p>
-              <h2><%= booking.status %></h2>
-            </div>
-          </div>
-        <% end %>
-
       </div>
     </div>
   </div>
 </div>
+
+<h3 class="main-title">Your Booking History:</h3>
+<div class="container">
+  <% @bookings.each do |booking| %>
+  <div class="row wrapper-offer">
+    <div class="col-xs-12 col-sm-4">
+      <div class="offer-card">
+        <h2><%= booking.studio.name %></h2>
+        <p><%= booking.date %></p>
+        <p><strong><%= booking.status %></strong></p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="offer-card">
+        <div class="card-studios"  style="background-image: url( '<%= booking.studio.photo %>' )">
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="offer-card">
+      <%= link_to 'Cancel', booking_path(booking), method: :delete, data: { confirm: 'Confirm cancellation...' }, class: "btn btn-danger offer-button" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
