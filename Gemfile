@@ -10,6 +10,7 @@ gem 'redis'
 
 gem 'devise'
 
+gem 'omniauth-facebook'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
 gem "geocoder"
