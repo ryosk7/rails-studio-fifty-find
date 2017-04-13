@@ -11,34 +11,28 @@
 
 <h3 class="main-title">Your offers:</h3>
 <div class="container">
-  <% @offers.each do |offer| %>
-  <div class="row wrapper-offer">
-    <div class="col-xs-12 col-sm-4">
-      <div class="offer-card">
-        <% if offer.status == "Accepted" %>
-          <button type="button" class="btn btn-success offer-button">Accepted</button>
-        <% elsif offer.status == "Rejected" %>
-          <button type="button" class="btn btn-danger offer-button">Rejected</button>
-        <% else %>
-          <%= link_to "Accept", accept_offer_path(offer), method: :patch, class: "btn btn-success offer-button" %>
-          <%= link_to "Reject", reject_offer_path(offer), method: :patch, class: "btn btn-danger offer-button" %>
+<% @offers.each do |offer| %>
+  <div class="wrapper-gray">
+    <div class="studio-contain"  style="background-image: url( '<%= offer.studio.photo %>' )">
+      <div class="col-xs-12 col-sm-6">
+        <div class="studio-black">
+          <h3><%= offer.studio.name %></h3>
+          <p>Booking for : <%= offer.date %></p>
+          <h4><strong><%= offer.status %></strong></h4>
+          <% if offer.status == "Accepted" %>
+            <button type="button" class="btn btn-success offer-button">Accepted</button>
+          <% elsif offer.status == "Rejected" %>
+            <button type="button" class="btn btn-danger offer-button">Rejected</button>
+          <% else %>
+            <%= link_to "Accept", accept_offer_path(offer), method: :patch, class: "btn btn-success offer-button" %>
+            <%= link_to "Reject", reject_offer_path(offer), method: :patch, class: "btn btn-danger offer-button" %>
           <% end %>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="offer-card">
-        <h2><%= offer.studio.name %></h2>
-        <p><%= offer.date %></p>
-        <p><strong><%= offer.status %></strong></p>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="offer-card">
-        <div class="card-studios"  style="background-image: url( '<%= offer.studio.photo %>' )">
         </div>
       </div>
+          <%= cl_image_tag offer.user.photo, id: "navbar-wagon-menu", class: "avatar card-user" %>
     </div>
   </div>
   <% end %>
 </div>
+
 
