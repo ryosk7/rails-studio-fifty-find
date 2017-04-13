@@ -1,5 +1,6 @@
 class StudiosController < ApplicationController
-  before_action :set_user, only: [:new, :create, :owner_list]
+  before_action :set_user, only: [:new, :create, :edit, :update, :owner_list]
+  before_action :set_studio, only: [:show, :edit, :update, :destroy]
 
   def index
     # Studio.joins(:bookings).where.not(bookings: { date: date})
@@ -27,7 +28,6 @@ class StudiosController < ApplicationController
 
   def show
     session[:return_to] = request.url
-    @studio = Studio.find(params[:id])
     @booking = Booking.new
   end
 
@@ -45,10 +45,27 @@ class StudiosController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @studio.update(studio_param)
+    redirect_to studios_owner_list_path
+  end
+
+  def destroy
+    @studio.destroy
+    redirect_to studios_owner_list_path
+  end
+
   private
 
   def set_user
     @user = User.find(current_user.id)
+  end
+
+  def set_studio
+    @studio = Studio.find(params[:id])
   end
 
   def studio_param
