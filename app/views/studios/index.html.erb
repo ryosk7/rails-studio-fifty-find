@@ -1,7 +1,20 @@
-<h1 class="main-title">Studio Results</h1>
+<!-- <h1 class="main-title">Studio Results</h1> -->
 <div class="wrapper-map">
   <div class="container">
     <div class="row">
+
+    <div class="search-bar">
+     <div class="card-search-bar">
+      <div class="col-xs-12">
+        <%= form_tag studios_path, method: :get do %>
+        <input type="text" name="date" class="form-control datepicker" value="<%= @date %>">
+        <%= submit_tag "Search", class: "search-wagon-button btn" %>
+        <% end %>
+      </div>
+      </div>
+    </div>
+
+
       <div class="results-box">
         <% @studios.each do |studio| %>
           <div class="col-xs-12 col-sm-6 col-lg-4">
@@ -11,7 +24,7 @@
                 <p><%= studio.location %></p>
                 <p><%= studio.price %> yen / day</p>
               </div>
-              <%= link_to nil, studio_path(studio), class: "card-link" %>
+                <%= link_to nil, studio_path(studio), class: "card-link" %>
               <%= cl_image_tag studio.user.photo, id: "navbar-wagon-menu", class: "avatar card-user" %>
             </div>
           </div>
