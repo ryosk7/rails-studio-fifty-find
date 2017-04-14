@@ -31,3 +31,29 @@
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+.wrapper-gray {
+  background-color: #D7D7D7;
+  padding: 20px;
+}
+
+
+.studio-contain {
+  height: 180px;
+  background-size: cover !important;
+  background-position: center;
+  position: relative;
+  // display: flex;
+  // justify-content: space-between;
+}
+
+.studio-black {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  // width: 350px;
+  padding-left: 10px;
+  padding-right: 20px;
+  position: absolute;
+  top: 0px;
+  left: 10px;
+}

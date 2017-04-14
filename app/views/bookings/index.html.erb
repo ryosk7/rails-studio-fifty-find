@@ -1,24 +1,17 @@
 <h3 class="main-title">Your bookings:</h3>
 <div class="container">
-  <% @bookings.each do |booking| %>
-  <div class="row wrapper-offer">
-    <div class="col-xs-12 col-sm-4">
-      <div class="offer-card">
-        <h2><%= booking.studio.name %></h2>
-        <p>Booking for : <%= booking.date %></p>
-        <h3><strong><%= booking.status %></strong></h3>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="offer-card">
-        <div class="card-studios"  style="background-image: url( '<%= booking.studio.photo %>' )">
+<% @bookings.each do |booking| %>
+  <div class="wrapper-gray">
+    <div class="studio-contain"  style="background-image: url( '<%= booking.studio.photo %>' )">
+      <div class="col-xs-12 col-sm-6">
+        <div class="studio-black">
+          <h3><%= booking.studio.name %></h3>
+          <p>Booking for : <%= booking.date %></p>
+          <h4><strong><%= booking.status %></strong></h4>
+          <%= link_to 'Cancel', booking_path(booking), method: :delete, data: { confirm: 'Confirm cancellation...' }, class: "btn btn-danger offer-button" %>
         </div>
       </div>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <div class="offer-card">
-      <%= link_to 'Cancel', booking_path(booking), method: :delete, data: { confirm: 'Confirm cancellation...' }, class: "btn btn-danger offer-button" %>
-      </div>
+          <%= cl_image_tag booking.studio.user.photo, id: "navbar-wagon-menu", class: "avatar card-user" %>
     </div>
   </div>
   <% end %>
