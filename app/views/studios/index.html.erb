@@ -12,6 +12,7 @@
                 <p><%= studio.price %> yen / day</p>
               </div>
               <%= link_to nil, studio_path(studio), class: "card-link" %>
+              <%= cl_image_tag studio.user.photo, id: "navbar-wagon-menu", class: "avatar card-user" %>
             </div>
           </div>
         <% end %>
