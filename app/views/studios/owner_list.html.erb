@@ -7,8 +7,9 @@
         <div class="owner-left">
           <h3><%= studio.name %></h3>
           <p><%= studio.location %></p>
-          <%= link_to "Edit", edit_studio_path(studio), class: "btn btn-info offer-button" %>
-          <%= link_to 'Remove', studio_path(studio), method: :delete, data: { confirm: 'Confirm remove...' }, class: "btn btn-danger offer-button" %>
+          <%= link_to "View", studio_path(studio), class: "btn btn-success owner-button" %>
+          <%= link_to "Edit", edit_studio_path(studio), class: "btn btn-info owner-button" %>
+          <%= link_to 'Remove', studio_path(studio), method: :delete, data: { confirm: 'Confirm remove...' }, class: "btn btn-danger owner-button" %>
         </div>
 <!--       </div>
       <div class="col-xs-12 col-sm-6"> -->
