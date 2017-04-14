@@ -2,20 +2,17 @@
 <div class="wrapper-map">
   <div class="container">
     <div class="row">
-
-    <div class="search-bar">
-     <div class="card-search-bar">
-      <div class="col-xs-12">
-        <%= form_tag studios_path, method: :get do %>
-        <input type="text" name="date" class="form-control datepicker" value="<%= @date %>">
-        <%= submit_tag "Search", class: "search-wagon-button btn" %>
-        <% end %>
-      </div>
-      </div>
-    </div>
-
-
       <div class="results-box">
+        <div class="search-bar">
+          <div class="card-search-bar">
+            <div class="col-xs-12">
+              <%= form_tag studios_path, method: :get do %>
+              <input type="text" name="date" class="form-control datepicker sameline" value="<%= @date %>">
+              <%= submit_tag "Search", class: "search-white-button btn" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
         <% @studios.each do |studio| %>
           <div class="col-xs-12 col-sm-6 col-lg-4">
             <div class="card-studios" style="background-image: url( '<%= studio.photo %>' )">
