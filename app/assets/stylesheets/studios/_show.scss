@@ -19,6 +19,7 @@
   width: 250px;
 }
 
+
 .owner-card {
   background-color: white;
   padding: 10px;
@@ -28,4 +29,15 @@
   border-radius: 4px;
   text-align: left;
   // margin-right: 50px;
+}
+
+.back-to-search {
+  text-align: center;
+  color: white;
+  padding-left: 30px;
+}
+
+.back-to-search:hover {
+  color: $yellow;
+  text-decoration: none;
 }
