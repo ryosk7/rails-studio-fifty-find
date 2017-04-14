@@ -11,27 +11,31 @@
 
 <h3 class="main-title">Your offers:</h3>
 <div class="container">
-<% @offers.each do |offer| %>
-  <div class="wrapper-gray">
-    <div class="studio-contain"  style="background-image: url( '<%= offer.studio.photo %>' )">
-      <div class="col-xs-12 col-sm-6">
-        <div class="studio-black">
-          <h3><%= offer.studio.name %></h3>
-          <p>Booking for : <%= offer.date %></p>
-          <h4><strong><%= offer.status %></strong></h4>
-          <% if offer.status == "Accepted" %>
-            <button type="button" class="btn btn-success offer-button">Accepted</button>
-          <% elsif offer.status == "Rejected" %>
-            <button type="button" class="btn btn-danger offer-button">Rejected</button>
-          <% else %>
-            <%= link_to "Accept", accept_offer_path(offer), method: :patch, class: "btn btn-success offer-button" %>
-            <%= link_to "Reject", reject_offer_path(offer), method: :patch, class: "btn btn-danger offer-button" %>
-          <% end %>
+  <% if @offers.empty? %>
+    <h5 style="text-align: center;">Sorry, you have no offers yet.</h5>
+  <% else %>
+    <% @offers.each do |offer| %>
+      <div class="wrapper-gray">
+        <div class="studio-contain"  style="background-image: url( '<%= offer.studio.photo %>' )">
+          <div class="col-xs-12 col-sm-6">
+            <div class="studio-black">
+                <h3><%= offer.studio.name %></h3>
+                <p>Booking for : <%= offer.date %></p>
+                <h4><strong><%= offer.status %></strong></h4>
+                <% if offer.status == "Accepted" %>
+                  <button type="button" class="btn btn-success offer-button">Accepted</button>
+                <% elsif offer.status == "Rejected" %>
+                  <button type="button" class="btn btn-danger offer-button">Rejected</button>
+                <% else %>
+                  <%= link_to "Accept", accept_offer_path(offer), method: :patch, class: "btn btn-success offer-button" %>
+                  <%= link_to "Reject", reject_offer_path(offer), method: :patch, class: "btn btn-danger offer-button" %>
+                <% end %>
+            </div>
+          </div>
+            <%= cl_image_tag offer.user.photo, id: "navbar-wagon-menu", class: "avatar card-user" %>
         </div>
       </div>
-          <%= cl_image_tag offer.user.photo, id: "navbar-wagon-menu", class: "avatar card-user" %>
-    </div>
-  </div>
+    <% end %>
   <% end %>
 </div>
 
