@@ -25,10 +25,34 @@ h3>a:hover {
 }
 
 .results-box {
+  margin-top: 15px;
   flex: 1 1 60%;
 }
 
 .map-box {
-  margin-top: 15  px;
+  margin-top: 15px;
   flex: 1 0 40%;
+}
+
+.sameline {
+  display: inline;
+  width: 300px;
+  margin-left: 15px;
+}
+
+.search-white-button {
+  margin-left: 10px;
+  // padding: 5px;
+  border-radius: 2px;
+  line-height: 20px;
+  background-color: white;
+  color: #929292;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid #929292;
+}
+.search-white-button:hover {
+  color: white;
+  background: #929292;
+  border-color: $red;
 }
