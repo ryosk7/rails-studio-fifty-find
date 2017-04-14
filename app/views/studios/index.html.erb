@@ -1,36 +1,42 @@
 <!-- <h1 class="main-title">Studio Results</h1> -->
+<div class="page-wrap">
 <div class="wrapper-map">
   <div class="container">
-    <div class="row">
-      <div class="results-box">
-        <div class="search-bar">
-          <div class="card-search-bar">
-            <div class="col-xs-12">
-              <%= form_tag studios_path, method: :get do %>
-              <input type="text" name="date" class="form-control datepicker sameline" value="<%= @date %>">
-              <%= submit_tag "Search", class: "search-white-button btn" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <% @studios.each do |studio| %>
-          <div class="col-xs-12 col-sm-6 col-lg-4">
-            <div class="card-studios" style="background-image: url( '<%= studio.photo %>' )">
-              <div class="card-description">
-                <h2><%= link_to studio.name, studio_path(studio) %></h2>
-                <p><%= studio.location %></p>
-                <p><%= studio.price %> yen / day</p>
+    <div class="wrapper-cards" style="margin-bottom: 100px;">
+      <div class="row">
+        <div class="results-box">
+          <div class="search-bar">
+            <div class="card-search-bar">
+              <div class="col-xs-12">
+                <%= form_tag studios_path, method: :get do %>
+                <input type="text" name="date" class="form-control datepicker sameline" value="<%= @date %>">
+                <%= submit_tag "Search", class: "search-white-button btn" %>
+                <% end %>
               </div>
-                <%= link_to nil, studio_path(studio), class: "card-link" %>
-              <%= cl_image_tag studio.user.photo, id: "navbar-wagon-menu", class: "avatar card-user" %>
             </div>
           </div>
-        <% end %>
+          <% @studios.each do |studio| %>
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+              <div class="card-studios" style="background-image: url( '<%= studio.photo %>' )">
+                <div class="card-description">
+                  <h2><%= link_to studio.name, studio_path(studio) %></h2>
+                  <p><%= studio.location %></p>
+                  <p><%= studio.price %> yen / day</p>
+                </div>
+                  <%= link_to nil, studio_path(studio), class: "card-link" %>
+                <%= cl_image_tag studio.user.photo, id: "navbar-wagon-menu", class: "avatar card-user" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
+
   </div>
+
+
   <div class="map-box">
-    <div id="map" style="width: 100%; height: 100%;">
+    <div id="map" style="width: 100%; height: 80%;">
       <% content_for(:after_js) do %>
         <script>
           $(document).ready(function() {
@@ -50,4 +56,6 @@
       <% end %>
     </div>
   </div>
+</div>
+
 </div>
