@@ -2,24 +2,24 @@
 <div class="container">
 <% @studios.each do |studio| %>
   <div class="wrapper-gray">
-    <div class="studio-contain"  style="background-image: url( '<%= studio.photo %>' )">
-      <div class="col-xs-12 col-sm-6">
-        <div class="studio-black">
+    <div class="owner-contain"  style="background-image: url( '<%= studio.photo %>' )">
+<!--       <div class="col-xs-12 col-sm-6"> -->
+        <div class="owner-left">
           <h3><%= studio.name %></h3>
           <p><%= studio.location %></p>
           <%= link_to "Edit", edit_studio_path(studio), class: "btn btn-info offer-button" %>
           <%= link_to 'Remove', studio_path(studio), method: :delete, data: { confirm: 'Confirm remove...' }, class: "btn btn-danger offer-button" %>
         </div>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <div class="studio-black">
+<!--       </div>
+      <div class="col-xs-12 col-sm-6"> -->
+        <div class="owner-right">
           <p><strong>Price: </strong>¥<%= studio.price %> / day
           <br><strong>Capacity: </strong><%= studio.capacity %></p>
           <p>   <%= studio.description %></p>
         </div>
-      </div>
       <%= cl_image_tag studio.user.photo, id: "navbar-wagon-menu", class: "avatar card-user" %>
-    </div>
+      </div>
+<!--     </div> -->
   </div>
   <% end %>
 </div>
