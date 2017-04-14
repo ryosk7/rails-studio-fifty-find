@@ -5,12 +5,12 @@ class StudiosController < ApplicationController
   def index
     # Studio.joins(:bookings).where.not(bookings: { date: date})
 
-    date = params[:date]
-    if date == ""
+    @date = params[:date]
+    if @date == "" || @date.nil?
       @studios = Studio.where.not(latitude: nil, longitude: nil)
 
     else
-      date = date.split("/")
+      date = @date.split("/")
       formatted_date = "#{date[2]}-#{date[0]}-#{date[1]}"
       parsed_date = Date.parse(formatted_date)
       @studios = Studio.available_for(parsed_date).where.not(latitude: nil, longitude: nil)
@@ -39,7 +39,7 @@ class StudiosController < ApplicationController
     @studio = Studio.new(studio_param)
     @studio.user = @user
     if @studio.save
-      redirect_to studio_path(@studio)
+      redirect_to studios_owner_list_path
     else
       render 'new'
     end
