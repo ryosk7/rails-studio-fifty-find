@@ -1,10 +1,13 @@
 .wrapper-carousel {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  right:10px;
   background-color: #E5E5E5;
   color: $blue;
   padding: 20px;
   margin-bottom: 120px;
+  padding-bottom: 50px;
 }
 
 .first-box {
