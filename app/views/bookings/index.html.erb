@@ -1,6 +1,6 @@
 <h3 class="main-title">Your bookings:</h3>
 <div class="container">
-<% @bookings.each do |booking| %>
+<% @bookings.order('created_at DESC').each do |booking| %>
   <div class="wrapper-gray">
     <div class="studio-contain"  style="background-image: url( '<%= booking.studio.photo %>' )">
       <div class="col-xs-12 col-sm-6">
