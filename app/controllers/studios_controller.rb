@@ -30,8 +30,8 @@ class StudiosController < ApplicationController
   def show
     session[:return_to] = request.url
     @booking = Booking.new
-    @date = Date.parse(session[:date])
-    @booking.date = @date
+    date = Date.parse(session[:date])
+    @booking.date = date
   end
 
   def new
